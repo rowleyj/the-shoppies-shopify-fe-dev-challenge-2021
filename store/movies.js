@@ -46,7 +46,8 @@ export const getters = {
 export const actions = {
 	async searchMoviesByTitle({state, commit}, {title}){
 		commit('SET_AWAITING_SEARCH_RESPONSE', true);
-		this.$axios.get('http://www.omdbapi.com/', {params: {apikey: process.env.OMDB_API_KEY, type: 'movie', s: title}}).then((res) =>{
+		// not best practive to include API key - but this is a free API http://www.omdbapi.com/apikey.aspx
+		this.$axios.get('http://www.omdbapi.com/', {params: {apikey: 'bc7f22b8', type: 'movie', s: title}}).then((res) =>{
 			console.log(res.data);
 			if(res.data.Response){
 				commit('ADD_MOVIES', res.data.Search);
